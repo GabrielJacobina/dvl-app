@@ -157,17 +157,17 @@ public class DvlJpaRepository<T extends MxBean<? extends Serializable>, ID exten
 	}
 
 	@Override
-	public List<T> findAllLike(String id) {
-		if ($(id).isBlank())
+	public List<T> findAllLike(String name) {
+		if ($(name).isBlank())
 			return firstPage();
 
-		id = id.toLowerCase();
+		name = name.toLowerCase();
 
-		String idParam = "id";
+		String nameParam = "name";
 
 		Like like = ei.getJavaType().getAnnotation(Like.class);
 		if (like != null) {
-			idParam = like.value();
+			nameParam = like.value();
 		} else {
 			T testInstance = null;
 			try {
@@ -177,13 +177,13 @@ public class DvlJpaRepository<T extends MxBean<? extends Serializable>, ID exten
 			}
 
 			if (testInstance instanceof CompositeId)
-				idParam += ".name";
+				nameParam += ".name";
 		}
 
 		return em.createQuery(//
 				"SELECT e FROM " + ei.getEntityName() //
-						+ " e WHERE lower(" + idParam + ") LIKE :id") //
-				.setParameter("id", "%" + id + "%") //
+						+ " e WHERE lower(" + nameParam + ") LIKE :name") //
+				.setParameter("name", "%" + name + "%") //
 				.setMaxResults(DEFAULT_PAGE_SIZE) //
 				.getResultList();
 	}

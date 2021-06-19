@@ -176,7 +176,7 @@ const initGlobalFilter = () => {
 	
 	$onenter(filter, (e) => {
 		App.debug(filter.value);
-		App.getList(App.path()+"/like?id="+filter.value);
+		App.getList(App.path()+"/like?name="+filter.value);
 	});
 };
 
