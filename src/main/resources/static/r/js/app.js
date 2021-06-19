@@ -341,7 +341,7 @@ App = function() {
         	
             let url = service;
             if (!service.startsWith("/")) {
-            	url = (_.config(_.VAR_API_PATH) || "/api") + "/"+url
+            	url = (_.config(_.VAR_API_PATH) || "/gab") + "/"+url
 
             	_.toggles((k, v) => {
             		_.trace("setting header "+k+"="+v);
