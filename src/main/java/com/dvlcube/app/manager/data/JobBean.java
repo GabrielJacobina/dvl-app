@@ -1,10 +1,12 @@
 package com.dvlcube.app.manager.data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
+import com.dvlcube.app.interfaces.JobConstraint;
 import com.dvlcube.utils.interfaces.MxBean;
 import com.dvlcube.utils.interfaces.Nameable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * @since 3 de jun de 2019
@@ -15,7 +17,10 @@ public class JobBean implements MxBean<Long>, Nameable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue
 	private Long id;
+
+//	@JobConstraint
 	private String name;
 	private Integer max;
 
