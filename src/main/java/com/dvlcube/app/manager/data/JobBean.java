@@ -1,9 +1,9 @@
 package com.dvlcube.app.manager.data;
 
-import com.dvlcube.app.interfaces.JobConstraint;
 import com.dvlcube.utils.interfaces.MxBean;
 import com.dvlcube.utils.interfaces.Nameable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,7 +20,7 @@ public class JobBean implements MxBean<Long>, Nameable {
 	@GeneratedValue
 	private Long id;
 
-//	@JobConstraint
+	@Column(unique = true)
 	private String name;
 	private Integer max;
 
