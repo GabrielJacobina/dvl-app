@@ -40,6 +40,17 @@ public class SkillService implements MxFilterableBeanService<SkillBean, Long> {
 		return repo.findById(id);
 	}
 
+	@GetMapping("/name")
+	public Optional<SkillBean> getByName(@RequestParam(required = true) String name) {
+		return repo.findByName(name);
+	}
+
+	@GetMapping("/exists/name")
+	public boolean verifyByName(@RequestParam(required = true) String name) {
+		Optional<SkillBean> skill = repo.findByName(name);
+		return skill.isPresent();
+	}
+
 	@Override
 	@PostMapping
 	public MxRestResponse post(@Valid @RequestBody SkillBean body) {
